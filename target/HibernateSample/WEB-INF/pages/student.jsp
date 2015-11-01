@@ -39,7 +39,27 @@
     <div><input id="submit" type="submit" value="Save Student"></div>
   </form>
 
-  <br><br>
+  <h2>Edit student by Id</h2>
+  <form id="editStudent">
+    <div>
+      <label for="id">ID:</label>
+      <input type="number" name="id" id="id" />
+    </div>
+    <div>
+      <label for="firstName">First Name</label>
+      <input type="text" name="firstName" id="firstName" />
+    </div>
+    <div>
+      <label for="lastName">Last Name</label>
+      <input type="text" name="lastName" id="lastName"  />
+    </div>
+    <div>
+      <label for="age">Age</label>
+      <input type="text" name="age" id="age" />
+    </div>
+
+    <div><input id="edit" type="submit" value="Edit Student"></div>
+  </form>
 
   <h2>Delete student By Id</h2>
   <div>
@@ -47,10 +67,9 @@
     <input type="number" name="firstName" id="firstInput"/>
   </div>
 
-  <div id="theJson"></div>
   <button type="button" id="button">Delete</button>
 
-  <br><br>
+  <br>
   <h2>Students Info</h2>
   <table id="studentTableResponse" class="table tr">
     <thead>

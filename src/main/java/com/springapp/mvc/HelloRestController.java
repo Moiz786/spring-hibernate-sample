@@ -35,19 +35,17 @@ public class HelloRestController {
     public @ResponseBody Student saveStudent(@ModelAttribute StudentDto student) {
         Student stu=new Student(student.getFirstName(),student.getLastName(), student.getAge());
         studentService.insert(stu);
-
         return stu;
     }
 
-    @RequestMapping(value = "/delete/{firstName}/{lastName}",method = RequestMethod.DELETE)
-    public void deleteStudent(@RequestBody@PathVariable("firstName") String first, @PathVariable("lastName") String last){
-        studentService.delete(studentService.getStudentByName(first, last));
-    }
-
-    @RequestMapping(value = "/show/{firstName}/{lastName}", method = RequestMethod.GET)
-     public Student show(@PathVariable("firstName") String first, @PathVariable("lastName") String last){
-        //studentService.show(id);
-        return (Student)studentService.getStudentByName(first,last);
+    @RequestMapping(value = "/update/{id}",method = RequestMethod.PUT)
+    public Student update(@PathVariable("id")int id,@RequestBody StudentDto student){
+        Student stu=studentService.getStudentById(id);
+        stu.setFirstName(student.getFirstName());
+        stu.setLastName(student.getLastName());
+        stu.setAge(student.getAge());
+        studentService.insert(stu);
+        return stu;
     }
 
     @RequestMapping(value = "/remove/{id}",method = RequestMethod.DELETE)
@@ -62,6 +60,19 @@ public class HelloRestController {
         }
 
     }
+
+    @RequestMapping(value = "/delete/{firstName}/{lastName}",method = RequestMethod.DELETE)
+    public void deleteStudent(@RequestBody@PathVariable("firstName") String first, @PathVariable("lastName") String last){
+        studentService.delete(studentService.getStudentByName(first, last));
+    }
+
+    @RequestMapping(value = "/show/{firstName}/{lastName}", method = RequestMethod.GET)
+     public Student show(@PathVariable("firstName") String first, @PathVariable("lastName") String last){
+        //studentService.show(id);
+        return (Student)studentService.getStudentByName(first,last);
+    }
+
+
     /*@RequestMapping(value = "show/{id}", method = RequestMethod.GET)
     public Student show(@PathVariable("id")int id){
         //studentService.show(id);

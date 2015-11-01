@@ -26,4 +26,6 @@ public interface Studentdao {
     Boolean deleteEntity(int id) throws Exception;
 
 
+
+
 }

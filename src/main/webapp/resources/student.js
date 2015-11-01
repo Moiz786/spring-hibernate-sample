@@ -1,5 +1,5 @@
-$(document).ready(function () {
 
+$(document).ready(function () {
     $('#saveStudent').submit(function (e) {
 
         /**/
@@ -24,10 +24,6 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-
-});
-
-$(document).ready(function () {
     $('#button').click(function () {
 
         var first = $('#firstInput').val();
@@ -47,38 +43,22 @@ $(document).ready(function () {
 
         });
     });
-});
+    $('#edit').submit(function () {
+
+        var id=$('#id').val();
+        $.ajax({
+            type:'UPDATE',
+            url:"/test/student/update/" + id+"/" ,
+            dataType:'json',
+            success:function (result) {
 
 
-/*function clearInputs() {
- $('input[id*="Input"]').each(function () {
- $(this).val('');
- });
- }*/
 
+            },
+            error:function (jqXHR, textStatus, errorThrown) {
+                alert("Student " + textStatus + " " + errorThrown + " !");
+            }
 
-/*
-$(document).ready(function () {
-    $('#search').keyup(function (e) {
-        var filter = $('#search').val();
-        if (filter.length > 0) {
-            loadTable(filter);
-        } else {
-            $('tr[id*="tr_"]').remove();
-        }
+        });
     });
 });
-
-function loadTable(filter) {
-    var url = "/test/student/load/" + filter;
-
-    $('#tbody').load(url, function (response, status, xhr) {
-        if (status == "error") {
-            var msg = "Sorry but there was an error: ";
-            $("#info").html(msg + xhr.status + " " + xhr.statusText);
-        }
-    });
-
-    return false;
-}
-*/
