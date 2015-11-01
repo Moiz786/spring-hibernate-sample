@@ -50,11 +50,6 @@ public class HelloRestController {
         return (Student)studentService.getStudentByName(first,last);
     }
 
-//    @RequestMapping(value = "/load", method = RequestMethod.GET)
-//    public ModelAndView load() {
-//        return new ModelAndView("/table");
-//    }
-
     @RequestMapping(value = "/remove/{id}",method = RequestMethod.DELETE)
     public void delete(@PathVariable("id")int id){
         //studentService.show(id);
